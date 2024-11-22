@@ -17,7 +17,6 @@ public abstract class Pizza {
 
     public void box() {
         System.out.println(name + " boxing");
-
     }
 
     public void setName(String name) {

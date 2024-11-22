@@ -23,7 +23,7 @@ class Singleton {
         private static final Singleton INSTANCE = new Singleton();
     }
 
-    public static Singleton getInstance(){
+    public static  Singleton getInstance(){
         //Runtime
         return SingletonInstance.INSTANCE;
     }

@@ -13,11 +13,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MyRedisConfig {
 
-    @Bean(destroyMethod = "shutdown")
-    public RedissonClient redisson(){
-        Config config = new Config();
-        config.useSingleServer().setAddress("redis://39.98.95.39:6379");
-        RedissonClient redissonClient = Redisson.create(config);
-        return redissonClient;
-    }
+//    @Bean(destroyMethod = "shutdown")
+//    public RedissonClient redisson(){
+//        Config config = new Config();
+//        config.useSingleServer().setAddress("redis://39.98.95.39:6379");
+//        RedissonClient redissonClient = Redisson.create(config);
+//        return redissonClient;
+//    }
 }

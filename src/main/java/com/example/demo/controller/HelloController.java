@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.controller.Service.ABS;
+import com.example.demo.controller.Service.Sub1ServiceImpl;
+import com.example.demo.controller.Service.Sub2ServiceImpl;
 import com.example.demo.thread.MyThreadPoolExecutor;
 import net.bytebuddy.asm.Advice;
 import org.redisson.api.RCountDownLatch;
@@ -8,10 +11,7 @@ import org.redisson.api.RReadWriteLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.xml.transform.Source;
 import java.util.concurrent.CompletableFuture;
@@ -25,7 +25,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 @RestController
 public class HelloController {
 
-    @Autowired
+    @Autowired(required = false)
     private RedissonClient redissonClient;
 
     @Autowired
@@ -114,7 +114,26 @@ public class HelloController {
         String s = future.get();
         return s;
 
+    }
+
+    @Autowired
+    Sub1ServiceImpl sub1Service;
+
+    @Autowired
+    Sub2ServiceImpl sub2Service;
+
+    @Autowired
+    private ABS abs;
+
+    @GetMapping("/sayhello")
+    public String sayHello(){
+        /*sub1Service.sayHello();
+        sub2Service.sayHello();*/
+        abs.ABSTest();
+        return "hello";
 
     }
+
+
 
 }
